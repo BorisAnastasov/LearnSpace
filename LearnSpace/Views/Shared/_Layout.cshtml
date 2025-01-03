@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LearnSpace</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LearnSpace.styles.css" asp-append-version="true" />
+</head>
+<body class="color-grey d-flex flex-column" style="overflow:auto">
+    <header class="color-purple header-index">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow border-0">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">LearnSpace</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="AboutUs">About us</a>
+                        </li>
+                        @if (User.IsStudent())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Student" asp-controller="Student" asp-action="Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Student" asp-controller="Grade" asp-action="AllGrades">Grades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Student" asp-controller="Class" asp-action="AllClassesForStudent">Classes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Student" asp-controller="Assignment" asp-action="AllAssignments">Assignments</a>
+                            </li>
+                        }
+                        else if (User.IsTeacher())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Teacher" asp-controller="Teacher" asp-action="Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Teacher" asp-controller="Class" asp-action="AllClassesForTeacher">Classes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Teacher" asp-controller="Submission" asp-action="AllSubmissionsForTeacher">Submissions</a>
+                            </li>
+                        }
+                        else if (User.IsAdmin())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="Admin" asp-controller="Admin" asp-action="AllUsers">Users</a>
+                            </li>
+                        }
+
+
+                    </ul>
+                    <ul class="navbar-nav">
+
+                        @if (User.IsUser())
+                        {
+                            if (User.IsStudent())
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="Student" asp-controller="Class" asp-action="AllClasses">Explore</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link  text-white" onclick="return confirm('Are you sure you want to log out?');" asp-area="" asp-controller="User" asp-action="Logout">Log out</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Login">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="User" asp-action="Register">Register</a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="flex-grow-1 flex-shrink-0">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer bg-white border-1">
+        <div class="m-2">
+            &copy; @DateTime.Now.Year - LearnSpace
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
+<style>
+    .footer {
+        position: fixed;
+        bottom: -50px; /* Start hidden (height of the footer) */
+        left: 0;
+        width: 100%;
+        background-color: white;
+        transition: bottom 0.3s ease; /* Smooth transition */
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .footer:hover, .footer.active {
+            bottom: 0; /* Fully visible when hovered or active */
+        }
+</style>
+<script>
+    document.addEventListener('mousemove', function (e) {
+        const footer = document.querySelector('.footer');
+        const windowHeight = window.innerHeight;
+
+        if (e.clientY > windowHeight - 50) { // Near the bottom of the screen
+            footer.classList.add('active');
+        } else {
+            footer.classList.remove('active');
+        }
+    });
+</script>

@@ -1,0 +1,97 @@
+﻿@{
+	ViewData["Title"] = "Home page";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="d-flex w-100 flex-column bg-white h-auto">
+
+	<div class="d-flex flex-row justify-content-around">
+		<div class=" d-flex flex-column align-items-center text-center m-3 p-3">
+			<h2>We can learn together!</h2>
+			<p class="m-0">Welcome to LearnSpace, your digital classroom! Track your assignments, connect with teachers, and access your grades—all in one place. Let’s make learning more connected and fun!</p>
+			@if (!User.Identity!.IsAuthenticated)
+			{
+				<a asp-controller="User" asp-action="Register" class="btn btn-primary mt-5">Join our community</a>
+			}
+			else
+			{
+				<h4 class="mt-5 fw-bold">
+					Explore our app!
+				</h4>
+			}
+		</div>
+
+		<img src="~/images/laptop.jpg" alt="Laptop" class="" style="width:40%; object-fit:cover;" />
+	</div>
+	<div class="color-purple text-white">
+
+		<ul class="d-flex flex-row justify-content-around list-unstyled align-items-center">
+			<li class="d-flex flex-column align-items-center m-3">
+				<i class="fa fa-bar-chart m-2" style="font-size: 8em" aria-hidden="true"></i>
+				<p class="h5">
+					Grading System
+				</p>
+				<p class="h6">
+					Keep track of your academic progress
+				</p>
+			</li>
+
+			<li class="d-flex flex-column align-items-center m-3">
+				<i class="fa fa-book m-2" style="font-size: 8em" aria-hidden="true"></i>
+				<p class="h5">
+					Assignment System
+				</p>
+				<p class="h6">
+					Never miss an assignment again
+				</p>
+			</li>
+
+			<li class="d-flex flex-column align-items-center m-3">
+				<i class="fa fa-comments m-2" style="font-size: 8em" aria-hidden="true"></i>
+				<p class="h5">
+					Messaging System
+				</p>
+				<p class="h6">
+					Stay in touch with teachers and classmates
+				</p>
+			</li>
+		</ul>
+
+	</div>
+	<div class="d-flex flex-row justify-content-between">
+		<img src="~/images/telefone.jpg" style="width:40%; object-fit:cover" alt="Alternate Text" />
+		<div class="m-4 d-flex flex-column align-content-center">
+			<p class="fs-4 fw-bolder">Our features provide a lot of choices!</p>
+
+			<ul class="d-flex flex-column justify-content-around m-0">
+				<li class="my-2">
+					Overall Progress View: View grades by class, assignment type, or term. A visual summary helps you see where you’re excelling and where to focus your efforts.
+				</li>
+				<li class="my-2">
+					Assignment Dashboard: All assignments, quizzes, and projects are organized by due date, making it easy to prioritize tasks.
+				</li>
+				<li class="my-2">
+					Direct Messaging: Send and receive messages directly to teachers or classmates, making communication easy and efficient.
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="d-flex flex-column color-purple text-center text-white p-4 h-100 m-0">
+		<h1 class="mb-4">Helpful Tips by Learning</h1>
+		<div class="d-flex flex-column align-items-center ">
+			<div class="tip color-blue">
+				<h3 class="w-100">Use the Pomodoro Technique</h3>
+				<p>Break study time into intervals, usually 25 minutes of focused work followed by a 5-minute break. This technique keeps your mind fresh and prevents burnout.</p>
+			</div>
+			<div class="tip color-blue">
+				<h3>Review Regularly</h3>
+				<p>Don’t wait until exam time to review. Regularly revisiting material helps move information into long-term memory, making it easier to recall later.</p>
+			</div>
+			<div class="tip color-blue mb-5">
+				<h3>Stay Organized with a Study Schedule</h3>
+				<p>Make a study schedule that includes time for each subject, assignment deadlines, and test dates. Sticking to a routine helps you stay on top of your workload without last-minute stress.</p>
+			</div>
+		</div>
+	</div>
+</div>

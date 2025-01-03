@@ -1,0 +1,114 @@
+﻿@model AllClassesQueryModel
+
+@{
+	ViewBag.Title = "Explore All Classes";
+}
+
+<div class="container mt-5">
+	<h2 class="mb-4 text-center" style="font-size:40px; font-weight: 700;">@ViewBag.Title</h2>
+	<p class="text-muted">Total Classes: <strong>@Model.TotalClassesCount</strong></p>
+
+	@if (Model.Classes.Any())
+	{
+		<form method="get">
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label asp-for="SearchTerm">Search by:</label>
+					<input asp-for="SearchTerm" class="form-control" placeholder="..." />
+				</div>
+
+				<div class="form-group col-md-3">
+					<label asp-for="Sorting">Sorting</label>
+					<select asp-for="Sorting" class="form-control">
+						<option disabled selected value=""> -- Choose Sorting -- </option>
+						<option value="0">GroupCapacity Descending</option>
+						<option value="1">GroupCapacity Ascending</option>
+						<option value="2">LowCapacity</option>
+						<option value="3">HighCapacity</option>
+					</select>
+				</div>
+
+				<div class="col-md-3">
+					<div class="form-group mt-4 p-2">
+						<input type="submit" value="Search" class="btn btn-primary" />
+					</div>
+				</div>
+			</div>
+		</form>
+
+		var previousPage = Model.CurrentPage - 1;
+		if (previousPage < 1)
+		{
+			previousPage = 1;
+		}
+
+		var maxPage = Math.Ceiling((double)Model.TotalClassesCount /
+		Model.TotalClassesCount);
+		<!-- Pagination -->
+		<div class="row mb-5">
+			<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+				<a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+				   asp-controller="Class"
+				   asp-action="All"
+				   asp-route-userId="@User.Id()"
+				   asp-route-searchTerm="@Model.SearchTerm"
+				   asp-route-currPage="@(Model.CurrentPage - 1)"
+				   asp-route-sorting="@((int)Model.Sorting)">Previous</a>
+			</div>
+
+			<div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+				<a class="btn btn-primary @(Model.CurrentPage == maxPage ? "disabled" : string.Empty)"
+				   asp-controller="Class"
+				   asp-action="All"
+				   asp-route-userId="@User.Id()"
+				   asp-route-searchTerm="@Model.SearchTerm"
+				   asp-route-currPage="@(Model.CurrentPage + 1)"
+				   asp-route-sorting="@((int)Model.Sorting)">Next</a>
+			</div>
+		</div>
+
+		<table class="table table-hover table-bordered" style="border: 3px solid black;">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Class Name</th>
+					<th scope="col">Teacher Name</th>
+					<th scope="col">Assignments Count</th>
+					<th scope="col">Capacity</th>
+					<th scope="col" class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var classInfo in Model.Classes)
+				{
+					<tr>
+						<th scope="row">@classInfo.Id</th>
+						<td>@classInfo.Name</td>
+						<td>@classInfo.TeacherName</td>
+						<td>@classInfo.AssignmentCount</td>
+						<td>@classInfo.CurrentStudentCount/@classInfo.GroupCapacity</td>
+						<td class="text-center">
+							@if (classInfo.GroupCapacity - classInfo.GroupCurrentCount > 0)
+							{
+								<form asp-controller="Class" asp-action="JoinClass" method="post">
+									<input type="hidden" name="classId" value="@classInfo.Id" />
+									<button type="submit" class="btn btn-info btn-sm">Join</button>
+								</form>
+							}
+							else
+							{
+								<p>Already full</p>
+							}
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+	else
+	{
+		<div class="alert alert-warning text-center" role="alert">
+			No classes are currently available.
+		</div>
+	}
+</div>

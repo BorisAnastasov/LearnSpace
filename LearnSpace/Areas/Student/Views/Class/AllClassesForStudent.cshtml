@@ -1,0 +1,69 @@
+﻿@model AllClassesViewModel
+
+@{
+    ViewBag.Title = "My Classes";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center" style="font-size:40px; font-weight: 700;">@ViewBag.Title</h2>
+    <p class="text-muted">Total Classes: <strong>@Model.TotalClassesCount</strong></p>
+
+    @if (Model.Classes.Any())
+    {
+        <table class="table table-hover table-bordered" style="border: 3px solid black;">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Class Name</th>
+                    <th scope="col">Teacher Name</th>
+                    <th scope="col">Assignments Count</th>
+                    <th scope="col">Capacity</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var classInfo in Model.Classes)
+                {
+                    <tr>
+                        <th scope="row">@classInfo.Id</th>
+                        <td>@classInfo.Name</td>
+                        <td>@classInfo.TeacherName</td>
+                        <td>@classInfo.AssignmentCount</td>
+                        <td>@classInfo.CurrentStudentCount/@classInfo.GroupCapacity</td>
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center">
+                                <!-- Leave Class Button -->
+                                <form asp-area="Student" asp-controller="Class" asp-action="LeaveClass" method="post" class="leave-class-form me-2">
+                                    <input type="hidden" name="classId" value="@classInfo.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Leave</button>
+                                </form>
+
+                                <!-- View Assignments Button -->
+                                <form asp-area="Student" asp-controller="Assignment" asp-action="AllAssignmentsClassStudent" method="get">
+                                    <input type="hidden" name="classId" value="@classInfo.Id" />
+                                    <button type="submit" class="btn btn-primary btn-sm">View Assignments</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            No classes are currently available.
+        </div>
+    }
+</div>
+
+<script>
+    document.querySelectorAll('.leave-class-form').forEach(form => {
+        form.addEventListener('submit', function (event) {
+            if (!confirm('Are you sure you want to leave this class?')) {
+                event.preventDefault();
+            }
+        });
+    });
+</script>

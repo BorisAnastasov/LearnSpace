@@ -1,0 +1,24 @@
+﻿@model AssignmentsInfoForTeacherViewModel
+
+@{
+    ViewBag.Title = "Assignment Details";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">@ViewBag.Title</h2>
+
+    <div class="card shadow-lg" style="margin-bottom: 8%;">
+        <div class="card-header bg-primary text-white">
+            <h4>@Model.Title</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Class Name:</strong> @Model.ClassName</p>
+            <p><strong>Description:</strong></p>
+            <p class="text-justify">@Model.Description</p>
+            <p><strong>Due Date:</strong> @Model.DueDate</p>
+        </div>
+        <div class="card-footer text-center">
+            <button onclick="history.back()" class="btn btn-secondary">Back to Assignments</button>
+        </div>
+    </div>
+</div>

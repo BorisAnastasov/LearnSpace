@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+html {
+    font-size: 19px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: "Comic Neue", cursive;
+    font-weight: 600;
+}
+
+
+
+.color-purple {
+    background-color: #6a4bca;
+}
+
+.color-grey {
+    background-color: #e3e3e3;
+}
+
+.color-blue {
+    background-color: #0e98e3;
+}
+
+.color-red {
+    background-color: #c4101f;
+}
+
+.color-green {
+    background-color: #17e34d;
+}
+
+.color-yellow {
+    background-color: #e0f21d;
+}
+
+.color-orange {
+    background-color: #fc8403;
+}
+
+.header-index {
+    height:8%;
+}
+
+.main-index{
+    height:85%;
+}
+
+.footer-index {
+    height:7%;
+}
+
+
+.tip {
+    width: 95%;
+    padding:0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    box-sizing: border-box;
+    border: 3px solid black;
+    margin: 15px;
+}
+    .tip h3 {
+        padding: 5px;
+        border-bottom: 3px solid black;
+        margin:0;
+    }
+    .tip p {
+        color:black;
+        padding: 5px;
+        background-color: white;
+        border-bottom-left-radius: 13px;
+        border-bottom-right-radius: 13px;
+        height:max-content;
+        margin:0;
+    }
+

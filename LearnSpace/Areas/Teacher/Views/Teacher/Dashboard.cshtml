@@ -1,0 +1,136 @@
+﻿@model TeacherDashboardModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div id="dashboardTeacher" class="d-flex flex-column">
+    <div class="text-center text-capitalize fs-4 text-white color-purple-dashboard w-auto m-2">
+        @Model.FullName
+    </div>
+    <div class="container">
+        <div class="d-flex flex-row">
+            <div class="color-blue m-2 w-100 text-white">
+                <h1 class="text-center" style="margin-top: 5px;">@Model.TotalStudentsEnrolled</h1>
+                <p class="h4 text-center">Total Students Enrolled</p>
+            </div>
+
+            <div class="color-red m-2 w-100 text-white">
+                <h1 class="text-center">@Model.AssignmentCount</h1>
+                <p class="h4 text-center">Total Assignments</p>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row">
+            <div class="color-green m-2 w-100 text-white">
+                <h1 class="text-center">@Model.WaitingSubmissions</h1>
+                <p class="h4 text-center">Pending Submissions</p>
+            </div>
+        </div>
+    </div>
+
+   @*  <div class="d-flex justify-content-center mb-5 mt-2">
+        <div class="charBox">
+            <canvas id="lineChart" class="w-100"></canvas>
+        </div>
+    </div> *@
+</div>
+
+<style>
+    .charBox {
+        width: 600px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+    }
+
+    .color-blue {
+        background-color: #007bff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .color-red {
+        background-color: #dc3545;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .color-green {
+        background-color: #28a745;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .color-purple-dashboard {
+        background-color: #6f42c1;
+        padding: 10px;
+        border-radius: 8px;
+    }
+</style>
+
+<script>
+    // Function to fetch chart data and render the chart
+    async function fetchAndRenderChart() {
+        try {
+            // Mock example of data for rendering a chart
+            const chartData = @Html.Raw(Json.Serialize(new List<dynamic>
+                {
+                new { Date = "2023-12-01", Submissions = 10 },
+                new { Date = "2023-12-02", Submissions = 15 },
+                new { Date = "2023-12-03", Submissions = 8 }
+                }));
+
+            // Extract labels (dates) and data points (submissions count)
+            const labels = chartData.map(item => item.Date);
+            const dataPoints = chartData.map(item => item.Submissions);
+
+            // Chart.js configuration
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Submissions Over Time',
+                    data: dataPoints,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Submissions'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            // Render the chart in the canvas element
+            new Chart(document.getElementById('lineChart'), config);
+
+        } catch (error) {
+            console.error('Error rendering chart:', error);
+        }
+    }
+
+    // Call the function to fetch and render the chart on page load
+    fetchAndRenderChart();
+</script>

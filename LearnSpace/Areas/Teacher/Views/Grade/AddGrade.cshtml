@@ -1,0 +1,50 @@
+﻿@model CreateGradeViewModel
+
+@{
+    ViewBag.Title = "Add Grade";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">@ViewBag.Title</h2>
+    <form asp-action="AddGrade" method="post">
+        <input type="hidden" asp-for="CourseId" />
+        <input type="hidden" asp-for="StudentId" />
+
+        <div class="mb-3">
+            <label asp-for="CourseName" class="form-label">Course Name</label>
+            <input asp-for="CourseName" class="form-control" readonly />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="StudentName" class="form-label">Student Name</label>
+            <input asp-for="StudentName" class="form-control" readonly/>
+            <span asp-validation-for="StudentName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Score" class="form-label">Grade</label>
+            <select asp-for="Score" class="form-control" required>
+                <option value="" disabled selected>Select a grade</option>
+                @for (int grade = 2; grade <= 6; grade++)
+                {
+                    <option value="@grade">@grade</option>
+                }
+            </select>
+            <span asp-validation-for="Score" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a asp-controller="Teacher" asp-action="GradeBook" asp-route-classId="@Model.CourseId" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

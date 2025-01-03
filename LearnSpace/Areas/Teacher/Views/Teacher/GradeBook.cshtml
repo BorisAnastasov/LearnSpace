@@ -1,0 +1,82 @@
+﻿@model GradeBookViewModel
+
+@{
+    ViewBag.Title = "Grade Book";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center" style="font-size:40px; font-weight: 700;">@ViewBag.Title</h2>
+    <p class="text-muted">Total Grades: <strong>@Model.List.SelectMany(s => s.Grades).Count()</strong></p>
+
+    @if (Model.List == null || !Model.List.Any())
+    {
+        <div class="alert alert-warning text-center">No grades available to display.</div>
+    }
+    else
+    {
+        <table class="table table-hover table-bordered" style="border: 3px solid black;">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Grades</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.List)
+                {
+                    <tr>
+                        <td class="fw-bold">@student.StudentName</td>
+                        <td>
+                            @if (student.Grades.Any())
+                            {
+                                <ul class="list-unstyled d-flex flex-row align-content-center flex-wrap mb-0">
+                                    @foreach (var grade in student.Grades)
+                                    {
+                                        <li class="me-2 mb-2">
+                                            <a asp-controller="Grade" asp-action="GradeInfo" asp-route-id="@grade.Id" class="text-decoration-none">
+                                                <div class="grade-box text-white text-center fw-bold"
+                                                     style="width: 50px; height: 50px; line-height: 50px; border-radius: 5px; background-color: @(GetGradeColor(grade.Score)); font-size: 1em;">
+                                                    @grade.Score
+                                                </div>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span>No grades recorded</span>
+                            }
+                        </td>
+                        <td>
+                            <!-- Add Grade Action -->
+                            <a asp-controller="Grade" asp-action="AddGrade" asp-route-studentId="@student.StudentId" asp-route-classId="@Model.ClassId"
+                               class="btn btn-sm btn-info">
+                                Add Grade
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Optional: Add any JS logic here if needed for dynamic interactions.
+    </script>
+}
+
+@functions {
+    // Helper method to calculate the background color based on the grade score
+    public string GetGradeColor(double score)
+    {
+        if (score <= 2.5) return "#dc3545"; // Red for lowest scores
+        if (score <= 3) return "#fd7e14"; // Orange
+        if (score <= 4) return "#ffc107"; // Yellow
+        if (score <= 5) return "#4169E1"; // Light blue
+        return "#198754";               // Dark green for highest scores
+    }
+}

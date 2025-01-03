@@ -1,0 +1,53 @@
+﻿@model GradeInfoViewModel
+
+@{
+    ViewBag.Title = "Grade Information";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">@ViewBag.Title</h1>
+
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+            <h4>Grade Details</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Course Name:</strong> @Model.CourseName</p>
+            <p>
+                <strong>Grade Score:</strong>
+                <span class="badge text-white"
+                      style="background-color: @(GetGradeColor(Model.Score)); padding: 0.5em 1em; font-size: 1.2em;">
+                    @Model.Score
+                </span>
+            </p>
+            <p><strong>Description:</strong> @Model.Description</p>
+            <p><strong>Teacher:</strong> @Model.Teacher</p>
+        </div>
+        <div class="card-footer text-center">
+            @if (User.IsTeacher())
+            {
+                <a asp-controller="Teacher" asp-action="GradeBook" asp-route-classId="@Model.CourseId" class="btn btn-secondary me-2">Back to Grades List</a>
+                <form asp-controller="Grade" asp-action="DeleteGrade" asp-route-gradeId="@Model.Id" method="post" class="d-inline">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this grade?');">
+                        Delete Grade
+                    </button>
+                </form>
+            }
+            else if (User.IsStudent())
+            {
+                <a asp-controller="Grade" asp-action="AllGrades" class="btn btn-secondary">Back to Grades List</a>
+            }
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetGradeColor(double score)
+    {
+        if (score <= 2) return "#dc3545"; // Red
+        if (score <= 3) return "#fd7e14"; // Orange
+        if (score <= 4) return "#ffc107"; // Yellow
+        if (score <= 5) return "#4169E1"; // Blue
+        return "#198754";                 // Green
+    }
+}

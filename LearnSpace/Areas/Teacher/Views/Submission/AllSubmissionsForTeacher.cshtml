@@ -1,0 +1,53 @@
+﻿@model SubmissionsViewModel
+
+@{
+    ViewBag.Title = "Submissions for Teacher";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size:40px; font-weight: 700;">Submissions for Teacher</h2>
+
+    <p class="text-muted">Total Submissions: <strong>@Model.Submissions.Count</strong></p>
+
+    @if (Model.Submissions.Any())
+    {
+        <table class="table table-hover table-bordered" style="border: 3px solid black;">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Assignment Title</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Submitted On</th>
+                    <th scope="col" class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var submission in Model.Submissions)
+                {
+                    <tr>
+                        <th scope="row">@submission.Id</th>
+                        <td>@submission.StudentName</td>
+                        <td>@submission.AssignmentTitle</td>
+                        <td>@submission.FileName</td>
+                        <td>@submission.SubmittedOn</td>
+                        <td class="text-center d-flex justify-content-between">
+                            <a href="@Url.Action("DownloadFile", "Submission", new { submissionId = submission.Id })" class="btn btn-success btn-sm m-1">Download</a>
+                            <form asp-action="DeleteSubmission" asp-controller="Submission" method="post" class="d-inline">
+                                <input type="hidden" name="submissionId" value="@submission.Id" />
+                                <button onclick="return confirm('Are you sure you want to delete this submission?')" type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center" role="alert">
+            No submissions are currently available for this assignment.
+        </div>
+    }
+</div>

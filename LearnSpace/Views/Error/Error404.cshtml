@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "404 - Page Not Found";
+}
+<div class="container" style="margin-top: 10%; display: flex; align-items: center;">
+    <div style="flex: 1; margin-right: 20px; text-align: left;">
+        <img src="@Url.Content("~/images/404.jpg")" alt="404 Illustration" style="max-width: 500px; width: 100%; height: auto;">
+    </div>
+    <div style="flex: 2;">
+        <h2>Oops! Page Not Found</h2>
+        <p>
+            It looks like you've ventured off-course. Perhaps the page for that assignment or grade doesn't exist.<br>
+            Double-check the URL or return to the dashboard.
+        </p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary" style="padding: 10px 20px; border-radius: 5px;">Go Back to Home</a>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+﻿@model StudentDashboardModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<div id="dashboardStudent" class="d-flex flex-column">
+	<div class="text-center text-capitalize fs-4 text-white color-purple w-auto m-2">
+		@Model.FullName
+	</div>
+	<div class="container">
+		<div class="d-flex flex-row">
+			<div asp-controller="Grade" asp-action="Dairy" class="color-blue m-2 w-100 text-white">
+                <h1 class="text-center" style="margin-top: 5px;">@if (Model.Success != null) { Model.Success.ToString("f2"); } else { "No Records.".ToString(); }
+                </h1>
+
+				<p class="h4  text-center">Success</p>
+			</div>
+
+
+
+			<div href="" class="color-red m-2 w-100 text-white">
+				<h1 class="text-center">@Model.GradeCount</h1>
+				<p class="h4  text-center">Grade Count</p>
+			</div>
+		</div>
+
+		<div class="d-flex flex-row">
+			<div href="" class="color-green m-2 w-100 text-white">
+				<h1 class="text-center">@Model.AssignmentCount</h1>
+				<p class="h4  text-center">Assignment Count</p>
+			</div>
+
+			<div href="" class="color-orange m-2 w-100 text-white">
+				<h1 class="text-center">@Model.ClassCount</h1>
+				<p class="h4 text-center">Classes Count</p>
+			</div>
+		</div>
+	</div>
+
+
+	@* <div class="d-flex justify-content-center mb-5 mt-2">
+		<div class="charBox">
+			<canvas id="lineChart" class="w-100"></canvas>
+		</div>
+	</div> *@
+</div>
+
+<style>
+	.charMenu {
+		width: 100vw;
+		height: 40px;
+		padding: 10px;
+		font-size: 20px;
+	}
+
+	.charCard {
+		width: 100vw;
+		height: calc(100vw - 40px);
+		display: flex;
+		align-items: center;
+		justify-content: start;
+	}
+
+	.charBox {
+		width: 600px;
+		padding: 20px;
+		border-radius: 20px;
+		border: solid 3px rgba(54, 162, 235, 1);
+		background: white;
+	}
+
+</style>
+
+<script>
+    // Function to fetch chart data and render the chart
+    async function fetchAndRenderChart() {
+        try {
+            // Fetch data from the backend endpoint
+            const averageSuccessData = @Html.Raw(Json.Serialize(Model.ChartData));;
+
+            // Check if the response is ok
+            if (!response.ok) {
+                throw new Error('Failed to fetch chart data');
+            }
+
+            // Extract labels (dates) and data points (average grades)
+            const labels = averageSuccessData.map(item => item.Date); // Dates for X-axis
+            const dataPoints = averageSuccessData.map(item => item.AverageGrade); // Average grades for Y-axis
+
+            // Chart.js configuration
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Average Success Over Time',
+                    data: dataPoints,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Average Success'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            // Render the chart in the canvas element
+            new Chart(document.getElementById('lineChart'), config);
+
+        } catch (error) {
+            console.error('Error rendering chart:', error);
+        }
+    }
+
+    // Call the function to fetch and render the chart on page load
+    fetchAndRenderChart();
+</script>
+
