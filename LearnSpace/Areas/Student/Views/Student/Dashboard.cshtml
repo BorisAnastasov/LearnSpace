@@ -51,11 +51,13 @@
 
 <script>
 	const ctx = document.getElementById('myChart');
+	const records = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ChartData.Select(x=> new {x = DateTime.Parse(x.Date),y = x.AverageGrade}).OrderBy(r=>r.x)));
+	const yValues = records.map(point => point.y);
 	const data = {
-		labels: labels,
+		labels: ['a'],
 		datasets: [{
-			label: 'My First Dataset',
-			data: [65, 59, 80, 81, 56, 55, 40],
+			label: 'Success',
+			data: yValues,
 			fill: false,
 			borderColor: 'rgb(75, 192, 192)',
 			tension: 0.1
