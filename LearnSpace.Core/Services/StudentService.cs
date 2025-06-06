@@ -4,6 +4,7 @@ using LearnSpace.Infrastructure.Database.Entities;
 using LearnSpace.Infrastructure.Database.Entities.Account;
 using LearnSpace.Infrastructure.Database.Repository;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace LearnSpace.Core.Services
 {
@@ -40,16 +41,17 @@ namespace LearnSpace.Core.Services
             var grades = await repository
                 .AllReadOnly<Grade>(a => a.StudentId == student.Id)
                 .Select(g => new { g.DateGraded, g.Score })
+                .Where(g=>g.DateGraded > DateTime.Now.AddMonths(-6))
                 .ToListAsync();
 
             var averageSuccessData = grades
-                .GroupBy(g => g.DateGraded.Date)
+                .GroupBy(g => g.DateGraded.Month)
                 .Select(g => new ChartSuccessModel
                 {
-                    Date = g.Key.ToString("yyyy-MM-dd"),
-                    AverageGrade = g.Average(x => x.Score)
-                })
-                .OrderBy(x => x.Date)
+                    AverageGrade = g.Average(x => x.Score),
+                    Month = g.FirstOrDefault().DateGraded.ToString("MMMM", new CultureInfo("en-US"))
+				})
+                .OrderBy(x => x.Month)
                 .ToList();
 
             model.ChartData = averageSuccessData;

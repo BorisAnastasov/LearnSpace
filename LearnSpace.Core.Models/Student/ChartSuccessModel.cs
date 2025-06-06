@@ -8,7 +8,7 @@ namespace LearnSpace.Core.Models.Student
 {
 	public class ChartSuccessModel
 	{
-        public string Date { get; set; }
+		public string Month { get; set; }
         public double AverageGrade { get; set; }
     }
 }

@@ -43,29 +43,40 @@
 		</div>
 	</div>
 
-	<div style="width: 100%; max-width: 800px; margin: auto;">
-	<canvas id="myChart" class="chart-canvas" style="width:fit-content;max-width:700px"></canvas> 
+	<div style="width: 100%; max-width: 800px; margin: auto; height: 45vh;" class="d-flex flex-row">
+	<canvas id="myLineChart" class="chart-canvas" style="width:fit-content;max-width:700px"></canvas>
+		<canvas id="myBarChart" class="chart-canvas" style="width:fit-content;max-width:700px"></canvas>
 	</div>
 </div>
 
 
 <script>
-	const ctx = document.getElementById('myChart');
-	const records = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ChartData.Select(x=> new {x = DateTime.Parse(x.Date),y = x.AverageGrade}).OrderBy(r=>r.x)));
+	const ctx = document.getElementById('myLineChart');
+	const records = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ChartData.Select(x=> new {x = x.Month,y = x.AverageGrade}).OrderBy(r=>r.x)));
 	const yValues = records.map(point => point.y);
+	const xValues = records.map(point => point.x);
 	const data = {
-		labels: ['a'],
+		labels: xValues,
 		datasets: [{
-			label: 'Success',
+			label: 'Average Success by last 6 Months',
 			data: yValues,
-			fill: false,
+			fill: true,
 			borderColor: 'rgb(75, 192, 192)',
 			tension: 0.1
 		}]
 	};
 	new Chart(ctx, {
 		type: 'line',
-		data: data
+		data: data,
+		options: {
+			responsive: true,
+			scales: {
+				y: {
+					min: 2,
+					max: 6,
+				}
+			}
+		}
 	});
 </script>
 
