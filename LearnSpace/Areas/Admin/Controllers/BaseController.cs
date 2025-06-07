@@ -5,8 +5,8 @@ using static LearnSpace.Web.Areas.Admin.Constants.AdminConstants;
 
 namespace LearnSpace.Web.Areas.Admin.Controllers
 {
-    [Area(AreaName)]
-	[Authorize(Roles = RoleName)]
+    [Area(AdminAreaName)]
+	[Authorize(Roles = AdminRoleName)]
 	public class BaseController : Controller
     {
         protected string GetUserId()

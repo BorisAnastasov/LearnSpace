@@ -1,13 +1,13 @@
 ﻿@model StudentDashboardModel
 
 @{
-    ViewBag.Title = "Dashboard";
+	ViewBag.Title = "Dashboard";
 }
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-</script>
+
 <div id="dashboardStudent" class="d-flex flex-column">
 	<div class="text-center text-capitalize fs-4 text-white color-purple w-auto m-2">
 		@Model.FullName
@@ -15,9 +15,9 @@
 	<div class="container">
 		<div class="d-flex flex-row">
 			<div asp-controller="Grade" asp-action="Dairy" class="color-blue m-2 w-100 text-white">
-                <h1 class="text-center" style="margin-top: 5px;">
-                    @(Model.Success != null ? Model.Success.ToString("f2") : "No Records.")
-                </h1>
+				<h1 class="text-center" style="margin-top: 5px;">
+					@(Model.Success != null ? Model.Success.ToString("f2") : "No Records.")
+				</h1>
 
 				<p class="h4  text-center">Success</p>
 			</div>
@@ -43,51 +43,89 @@
 		</div>
 	</div>
 
-	<div style="width: 100%; max-width: 800px; margin: auto; height: 45vh;" class="d-flex flex-row">
-	<canvas id="myLineChart" class="chart-canvas" style="width:fit-content;max-width:700px"></canvas>
-		<canvas id="myBarChart" class="chart-canvas" style="width:fit-content;max-width:700px"></canvas>
+	<div class=" d-flex flex-row justify-content-center align-items-center" style="">
+		<canvas id="myLineChart" class="chart-canvas" style="height: 300px; width: 500px"></canvas>
+		<canvas id="myBarChart" class="chart-canvas" style="height: 300px; width: 500px"></canvas>
 	</div>
+
+
+
+
 </div>
-
-
 <script>
-	const ctx = document.getElementById('myLineChart');
-	const records = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.ChartData.Select(x=> new {x = x.Month,y = x.AverageGrade}).OrderBy(r=>r.x)));
-	const yValues = records.map(point => point.y);
-	const xValues = records.map(point => point.x);
-	const data = {
-		labels: xValues,
-		datasets: [{
-			label: 'Average Success by last 6 Months',
-			data: yValues,
-			fill: true,
-			borderColor: 'rgb(75, 192, 192)',
-			tension: 0.1
-		}]
-	};
-	new Chart(ctx, {
-		type: 'line',
-		data: data,
-		options: {
-			responsive: true,
-			scales: {
-				y: {
-					min: 2,
-					max: 6,
+	document.addEventListener("DOMContentLoaded", function () {
+		const ctxLine = document.getElementById('myLineChart');
+		const recordsLine = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+			Model.LineChartData.Select(x => new { x = x.Month, y = x.AverageGrade }).OrderBy(r => r.x)
+			));
+
+		const lineYValues = recordsLine.map(point => point.y);
+		const lineXValues = recordsLine.map(point => point.x);
+
+		const dataLine = {
+			labels: lineXValues,
+			datasets: [{
+				label: 'Average Success by Month',
+				data: lineYValues,
+				fill: true,
+				borderColor: 'rgb(75, 192, 192)',
+				tension: 0.1
+			}]
+		};
+
+		new Chart(ctxLine, {
+			type: 'line',
+			data: dataLine,
+			options: {
+				responsive: false,
+				scales: {
+					y: {
+						min: 2,
+						max: 6,
+					}
 				}
 			}
-		}
+		});
+
+		const ctxBar = document.getElementById('myBarChart');
+		const recordsBar = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(
+			Model.BarChartData.Select(x => new { x = x.ClassName, y = x.AverageGrade }).OrderBy(r => r.x)
+			));
+
+		const barYValues = recordsBar.map(point => point.y);
+		const barXValues = recordsBar.map(point => point.x);
+
+		const dataBar = {
+			labels: barXValues,
+			datasets: [{
+				label: 'Average Grade By Class',
+				backgroundColor: 'rgba(255, 99, 132, 0.5)',
+				borderColor: 'rgba(255, 99, 132, 1)',
+				data: barYValues,
+				fill: true
+			}]
+		};
+
+		new Chart(ctxBar, {
+			type: 'bar',
+			data: dataBar,
+			options: {
+				responsive: false,
+				scales: {
+					y: {
+						min: 2,
+						max: 6
+					}
+				}
+			}
+		});
 	});
 </script>
 
+
 <style>
 
-	.chart-canvas {
-		width: 100%;
-		aspect-ratio: 2 / 1; /* width is 2x height */
-		max-width: 100%;
-		display: block;
-	}
+
 	.charMenu {
 		width: 100vw;
 		height: 40px;
@@ -110,5 +148,4 @@
 		border: solid 3px rgba(54, 162, 235, 1);
 		background: white;
 	}
-
 </style>

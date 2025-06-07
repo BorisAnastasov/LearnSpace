@@ -2,8 +2,8 @@
 {
     public static class AdminConstants
     {
-        public const string AreaName = "Admin";
-        public const string RoleName = "Administrator";
+        public const string AdminAreaName = "Admin";
+        public const string AdminRoleName = "Administrator";
 
     }
 }

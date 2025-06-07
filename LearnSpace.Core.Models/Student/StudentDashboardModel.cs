@@ -7,7 +7,8 @@
         public int GradeCount { get; set; }
         public int AssignmentCount { get; set; }
         public int ClassCount { get; set; }
-        public List<ChartSuccessModel> ChartData { get; set; }
+        public List<LineChartSuccessModel> LineChartData { get; set; }
+        public List<BarChartSuccessModel> BarChartData { get; set; }
 
     }
 }

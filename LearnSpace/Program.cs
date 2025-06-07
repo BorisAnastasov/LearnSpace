@@ -16,6 +16,8 @@ namespace LearnSpace
 
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSignalR();
+
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())

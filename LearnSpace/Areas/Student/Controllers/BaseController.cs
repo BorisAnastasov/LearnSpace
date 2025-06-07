@@ -6,7 +6,7 @@ using static LearnSpace.Web.Areas.Student.Constants.StudentConstants;
 namespace LearnSpace.Web.Areas.Student.Controllers
 {
     [Area(StudentAreaName)]
-	[Authorize(Roles = StudentAreaName)]
+	[Authorize(Roles = StudentRoleName)]
 	public class BaseController : Controller
     {
         protected string GetUserId()

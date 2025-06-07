@@ -40,13 +40,13 @@ namespace LearnSpace.Core.Services
 
             var grades = await repository
                 .AllReadOnly<Grade>(a => a.StudentId == student.Id)
-                .Select(g => new { g.DateGraded, g.Score })
+                .Select(g => new { g.DateGraded, g.Score, g.Course.Name })
                 .Where(g=>g.DateGraded > DateTime.Now.AddMonths(-6))
                 .ToListAsync();
 
-            var averageSuccessData = grades
+            var averageLineSuccessData = grades
                 .GroupBy(g => g.DateGraded.Month)
-                .Select(g => new ChartSuccessModel
+                .Select(g => new LineChartSuccessModel
                 {
                     AverageGrade = g.Average(x => x.Score),
                     Month = g.FirstOrDefault().DateGraded.ToString("MMMM", new CultureInfo("en-US"))
@@ -54,9 +54,21 @@ namespace LearnSpace.Core.Services
                 .OrderBy(x => x.Month)
                 .ToList();
 
-            model.ChartData = averageSuccessData;
+            model.LineChartData = averageLineSuccessData;
 
-            return model;
+			var averageBarSuccessData = grades
+				.GroupBy(g => g.Name)
+				.Select(g => new BarChartSuccessModel
+				{
+					AverageGrade = g.Average(x => x.Score),
+					ClassName = g.FirstOrDefault().Name
+				})
+				.OrderBy(x => x.ClassName)
+				.ToList();
+
+			model.BarChartData = averageBarSuccessData;
+
+			return model;
         }
     }
 }

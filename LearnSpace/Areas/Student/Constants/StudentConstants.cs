@@ -3,6 +3,6 @@
 	public static class StudentConstants
 	{
 		public const string StudentAreaName = "Student";
-		public const string StudentRole = "Student";
+		public const string StudentRoleName = "Student";
 	}
 }

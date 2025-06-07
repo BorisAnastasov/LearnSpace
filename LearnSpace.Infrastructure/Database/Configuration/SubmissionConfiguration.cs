@@ -15,10 +15,10 @@ namespace LearnSpace.Infrastructure.Database.Configuration
             var submissions = new List<Submission>();
 
             var file1Content = FileToByteArray("\\uploads\\submissions\\task1.txt");
-            var file2Content = FileToByteArray("\\uploads\\submissions\\task1.txt");
-            var file3Content = FileToByteArray("\\uploads\\submissions\\task1.txt");
-            var file4Content = FileToByteArray("\\uploads\\submissions\\task1.txt");
-            var file5Content = FileToByteArray("\\uploads\\submissions\\task1.txt");
+            var file2Content = FileToByteArray("\\uploads\\submissions\\task2.txt");
+            var file3Content = FileToByteArray("\\uploads\\submissions\\task3.txt");
+            var file4Content = FileToByteArray("\\uploads\\submissions\\task4.txt");
+            var file5Content = FileToByteArray("\\uploads\\submissions\\task5.txt");
 
             // 1
             submissions.Add(new Submission()
@@ -29,7 +29,7 @@ namespace LearnSpace.Infrastructure.Database.Configuration
                 FileType = "text/plain",
                 FileName ="task1.txt",
                 FileContent = file1Content, 
-                SubmittedOn = DateTime.UtcNow,
+                SubmittedOn = DateTime.UtcNow.AddDays(-5),
             });
 
             // 2
@@ -41,7 +41,7 @@ namespace LearnSpace.Infrastructure.Database.Configuration
                 FileContent = file2Content,
                 FileType = "text/plain",
                 FileName = "task2.txt",
-                SubmittedOn = DateTime.UtcNow,
+                SubmittedOn = DateTime.UtcNow.AddDays(-4),
             });
 
             // 3
@@ -53,7 +53,7 @@ namespace LearnSpace.Infrastructure.Database.Configuration
                 FileContent = file3Content,
                 FileType = "text/plain",
                 FileName = "task3.txt",
-                SubmittedOn = DateTime.UtcNow,
+                SubmittedOn = DateTime.UtcNow.AddDays(-1),
             });
 
             // 4
@@ -65,7 +65,7 @@ namespace LearnSpace.Infrastructure.Database.Configuration
                 FileContent = file4Content,
                 FileType = "text/plain",
                 FileName = "task4.txt",
-                SubmittedOn = DateTime.UtcNow,
+                SubmittedOn = DateTime.UtcNow.AddDays(-3),
             });
 
             // 5
@@ -77,7 +77,7 @@ namespace LearnSpace.Infrastructure.Database.Configuration
                 FileContent = file5Content,
                 FileType = "text/plain",
                 FileName = "task5.txt",
-                SubmittedOn = DateTime.UtcNow,
+                SubmittedOn = DateTime.UtcNow.AddDays(-6),
             });
 
             return submissions;
