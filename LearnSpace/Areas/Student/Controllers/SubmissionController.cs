@@ -20,7 +20,7 @@ namespace LearnSpace.Web.Areas.Student.Controllers
 				ModelState.AddModelError("", "The assignment does not exist.");
 				return RedirectToAction("AssignmentInfo", "Assignment", new AssignmentInfoViewModel
 				{
-					Id = assignmentId,
+					AssignmentId = assignmentId,
 					Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList()
 				});
 			}
@@ -44,7 +44,7 @@ namespace LearnSpace.Web.Areas.Student.Controllers
 			{
 				var model = new AssignmentInfoViewModel
 				{
-					Id = assignmentId,
+					AssignmentId = assignmentId,
 					Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList()
 				};
 				return RedirectToAction("AssignmentInfo", "Assignment", model);

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearnSpace.Infrastructure.Migrations
 {
     [DbContext(typeof(LearnSpaceDbContext))]
-    [Migration("20241220084057_Initial")]
+    [Migration("20250608144849_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -107,7 +107,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("2d522f0f-1d26-429e-8bef-0098f10d96e9"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "67df0c74-6b39-4135-aa0e-5219a1804cd7",
+                            ConcurrencyStamp = "42e731a2-656d-4b20-885b-0495b7780e88",
                             DateOfBirth = new DateTime(1980, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@abv.bg",
                             EmailConfirmed = false,
@@ -116,9 +116,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ABV.BG",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAGJUZfY5bpvfQIGpEPKQPj0Tci3nvG5/6DczKygwbvHVs2THma5QU5r8NF4rX2v0w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKu1dd297TOxBjlyGk7Nxq/gX4k6b0yUGZ5VrUE23zdSj5iHCmrj2J7EUtC+gBOdag==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e34ac9f0-21d1-4d0c-94f0-870550fcb8d9",
+                            SecurityStamp = "be70acd7-d538-45cf-b312-25f2017dc75d",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         },
@@ -126,7 +126,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("bdc70ff8-a02a-428f-ad1c-b5ba645a45e1"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e5215c8b-bd18-45bf-89d8-c2cd2af7862e",
+                            ConcurrencyStamp = "56f51977-a1c0-4ba0-a17e-d59dfab1db96",
                             DateOfBirth = new DateTime(1980, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "teacher1@abv.bg",
                             EmailConfirmed = false,
@@ -135,9 +135,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEACHER1@ABV.BG",
                             NormalizedUserName = "TEACHER1",
-                            PasswordHash = "AQAAAAEAACcQAAAAENd2t4Nmzkr0HZVwJ9tq2GUV7hJyOcr/kx8+uZKImV6fosExaTW1H8I24NQEcrEbcw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBwfioWhwVnaESArLF+jpCb1aOVygWSULN0zgFohBT1y0+dhapqHpzoy2QDSy0rGhw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6a135db2-06eb-49c0-a4af-29aeb08ace3a",
+                            SecurityStamp = "e7450684-51f9-40a1-ae51-f5f771aee3d6",
                             TwoFactorEnabled = false,
                             UserName = "teacher1"
                         },
@@ -145,7 +145,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("bc5f8df5-6115-4344-897b-73e185df4bff"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b6af8aee-3a15-47aa-b589-df5290851c07",
+                            ConcurrencyStamp = "13ec13c2-a124-4aad-972b-523b23debb37",
                             DateOfBirth = new DateTime(1982, 8, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "teacher2@abv.bg",
                             EmailConfirmed = false,
@@ -154,9 +154,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TEACHER2@ABV.BG",
                             NormalizedUserName = "TEACHER2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHNC49tSUFH2tADOP+aXig6d27VpX5Hyrs6dNQdWbLu+2jWrNpqNPdxml/GQMxEsPw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEM/JjJmlHnf+YvUGArSbdPBXEUs0+rP/Wo8EMkEovoQit4dEbfFzuJffqflUWVyAYw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "85ecff4c-98d9-47ea-a76f-46620b8820cb",
+                            SecurityStamp = "f60fca66-066d-4352-ac2b-5dbeeb1e6023",
                             TwoFactorEnabled = false,
                             UserName = "teacher2"
                         },
@@ -164,7 +164,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("a52dc824-b577-4862-ac67-29d391116793"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "635e5717-8e3f-454c-a6b3-22fa320860cd",
+                            ConcurrencyStamp = "45db4e75-f7fc-48ed-b013-e31c1c611fda",
                             DateOfBirth = new DateTime(2005, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "student1@abv.bg",
                             EmailConfirmed = false,
@@ -173,9 +173,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT1@ABV.BG",
                             NormalizedUserName = "STUDENT1",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHblLjoMuNN6gscgE1CMxsrClloaPDMBjm4U5gMCvDuaN6/9Cg4w19V9tHCnaFFAhg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHEcYu8KwzuiReFuYcioCllzwDyUfk8joVJoGQECtgle4ylh1VnZmPVzMxgXBDjgCg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9e084e97-9805-4297-9587-e35dab1c1da1",
+                            SecurityStamp = "a1681bdf-1029-407d-a66c-68c983d3262d",
                             TwoFactorEnabled = false,
                             UserName = "student1"
                         },
@@ -183,7 +183,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("08d20ff4-ecdd-4b8a-8142-4cf42ee6adc6"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9109ca7d-b46d-464e-a0fc-6d879a981a36",
+                            ConcurrencyStamp = "becc1b84-c7a2-47bb-a9e7-a2d11d3815ce",
                             DateOfBirth = new DateTime(2006, 7, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "student2@abv.bg",
                             EmailConfirmed = false,
@@ -192,9 +192,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT2@ABV.BG",
                             NormalizedUserName = "STUDENT2",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEXXiJ9cEoww7rvpIgwgg9c1gSUFIieNmPW8R4Tk9nOAaLX9DjGuq9FF03kfmziElA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKIiZbEcqsNfzUEfJqN4d6zQ5D/tVFoVPqYCNGSxjawxVUgHfzJ+b/hTls1AhlDifg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "66ee03c3-64e3-47dc-af64-d8e29bd00e2c",
+                            SecurityStamp = "2b7597b8-a488-48c5-83b7-f5bf98575c9b",
                             TwoFactorEnabled = false,
                             UserName = "student2"
                         },
@@ -202,7 +202,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("3cc698b0-736e-490a-97e3-3f343bf8bfd8"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0693e764-8bd6-404b-8d04-9d7b5d99fd78",
+                            ConcurrencyStamp = "c33e8e2f-f450-41e0-a668-b98cbd5a12b3",
                             DateOfBirth = new DateTime(2005, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "student3@abv.bg",
                             EmailConfirmed = false,
@@ -211,9 +211,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT3@ABV.BG",
                             NormalizedUserName = "STUDENT3",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFYkr1vQwL+DAtc1WMl3uDs1YU8WefjaX85AbwjQDRcGbG8P9wX4RGPVeg19NuEmhA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO7SPJQdtvl8dPs0RXseZg+5jHgMkt9NXvrWQFXHJpx9EXnS1cEGXsPg+by+A5Qa0A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "815f5dfe-a8d3-4888-90a5-ca05f6096c86",
+                            SecurityStamp = "bcdc4447-4d66-4e6a-943d-8374fe6c58d0",
                             TwoFactorEnabled = false,
                             UserName = "student3"
                         },
@@ -221,7 +221,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("ebdc00b8-7106-4cbd-a482-da93c40103d3"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b2ad82c7-8a2e-42aa-b68a-474284ab1c36",
+                            ConcurrencyStamp = "4c8471aa-e311-4b54-8250-7941fab2b618",
                             DateOfBirth = new DateTime(2006, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "student4@abv.bg",
                             EmailConfirmed = false,
@@ -230,9 +230,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT4@ABV.BG",
                             NormalizedUserName = "STUDENT4",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDi3xDJqyZ/HxPYXZYE3Fd7HmfXzWVhmUrh+srl4nzPO3U0AtJKbK96gnngqCFPwyw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJhcH/qssihTREyAOykQ/kF9K+C8HGIA7H1pffEgPYAoE68GO7BqfooU5JmAcIAhhw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "22ab1a1e-8980-4ce9-a54e-944b1e5c7c8b",
+                            SecurityStamp = "d364bf11-0400-49b4-bfda-3cd4ce913167",
                             TwoFactorEnabled = false,
                             UserName = "student4"
                         },
@@ -240,7 +240,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = new Guid("267a7709-17b4-413c-9026-a6f365d59731"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9023d946-3229-4e1f-a9bd-614b1835baba",
+                            ConcurrencyStamp = "7179dfcc-cbc8-4a6d-bdbc-e473a2d3eff6",
                             DateOfBirth = new DateTime(2006, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "student5@abv.bg",
                             EmailConfirmed = false,
@@ -249,9 +249,9 @@ namespace LearnSpace.Infrastructure.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "STUDENT5@ABV.BG",
                             NormalizedUserName = "STUDENT5",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJnnhDZCMYBeQWlPHT0nD95Jv7rm8Ey+HjzOveGah2L3Ulgm27w47/4Pcam+IYk5cQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEACQNjNfxnhPYHLscGV5woF8pWEXEMpIm+vfFF3f0xNsocjUsf3iTO7Ndb15s/XP9g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b7864583-8048-4ba9-a030-fd09a62af045",
+                            SecurityStamp = "f66aa82b-ef56-4738-9819-16f75e11c88f",
                             TwoFactorEnabled = false,
                             UserName = "student5"
                         });
@@ -373,7 +373,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 1,
                             CourseId = 1,
                             Description = "Test your understanding of the core concepts of geometry, including identifying shapes, calculating angles, and writing geometric proofs. This assessment covers both basic and advanced topics to challenge your spatial reasoning and problem-solving skills.",
-                            DueDate = new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Geometric Foundations: Shapes, Angles, and Proofs"
                         },
                         new
@@ -381,7 +381,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 2,
                             CourseId = 1,
                             Description = "This test focuses on applying geometric theorems to calculate areas, volumes, and properties of 2D and 3D shapes. Ideal for students ready to showcase their analytical abilities and mastery of geometric principles.",
-                            DueDate = new DateTime(2024, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Geometry Challenge: Area, Volume, and Theorems"
                         },
                         new
@@ -389,7 +389,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 3,
                             CourseId = 2,
                             Description = "Test your mastery of foundational algebra concepts, including solving equations, working with inequalities, and graphing linear and quadratic functions. Perfect for sharpening your analytical and computational skills.",
-                            DueDate = new DateTime(2024, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Algebra Essentials: Equations, Inequalities, and Graphs"
                         },
                         new
@@ -397,7 +397,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 4,
                             CourseId = 2,
                             Description = "Put your algebra knowledge to the test with questions covering systems of equations, polynomial operations, and real-world applications. Designed to evaluate both theoretical understanding and practical problem-solving ability.",
-                            DueDate = new DateTime(2024, 12, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Algebra in Action: Systems, Polynomials, and Word Problems"
                         },
                         new
@@ -405,7 +405,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 5,
                             CourseId = 3,
                             Description = "Assess your understanding of key events in modern history, from political revolutions to world wars and the social transformations that shaped the 19th and 20th centuries. Test your knowledge of causes, consequences, and global impacts.",
-                            DueDate = new DateTime(2024, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Modern History Milestones: Revolutions, Wars, and Transformations"
                         },
                         new
@@ -413,7 +413,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 6,
                             CourseId = 3,
                             Description = "Examine pivotal events and trends of the 20th century, from world wars to the civil rights movement and globalization. This test evaluates your understanding of historical causes, key figures, and lasting legacies.",
-                            DueDate = new DateTime(2024, 12, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Twentieth Century: Conflict, Progress, and Globalization"
                         },
                         new
@@ -421,7 +421,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 7,
                             CourseId = 4,
                             Description = "Explore the rise and fall of ancient civilizations, from Mesopotamia to Rome. This test covers key developments in governance, culture, and innovation that shaped early human history.",
-                            DueDate = new DateTime(2024, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Ancient Civilizations: Foundations of the Modern World"
                         },
                         new
@@ -429,7 +429,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 8,
                             CourseId = 4,
                             Description = "Dive into the fascinating world of ancient empires, legendary battles, and enduring myths. This assessment evaluates your knowledge of ancient societies, their achievements, and their lasting influence on humanity.",
-                            DueDate = new DateTime(2024, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Empires and Myths: A Journey Through Ancient History"
                         },
                         new
@@ -437,7 +437,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 9,
                             CourseId = 5,
                             Description = "Test your knowledge of the medieval period, from the structure of feudal society to the influence of the Church and the everyday lives of people in the Middle Ages. Explore the events and ideas that defined this era.",
-                            DueDate = new DateTime(2024, 12, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Middle Ages: Feudalism, Faith, and Fiefdoms"
                         },
                         new
@@ -445,7 +445,7 @@ namespace LearnSpace.Infrastructure.Migrations
                             Id = 10,
                             CourseId = 5,
                             Description = "This test examines the major events and themes of the Middle Ages, including the Crusades, the growth of monarchies, and the cultural and intellectual achievements that emerged from this dynamic period.",
-                            DueDate = new DateTime(2024, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 6, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Medieval History: Crusades, Kingdoms, and Culture"
                         });
                 });
@@ -560,7 +560,7 @@ namespace LearnSpace.Infrastructure.Migrations
                         {
                             Id = 1,
                             CourseId = 1,
-                            DateGraded = new DateTime(2024, 12, 20, 10, 40, 56, 267, DateTimeKind.Local).AddTicks(2706),
+                            DateGraded = new DateTime(2025, 6, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1643),
                             Description = "You can do more.",
                             Score = 4,
                             StudentId = new Guid("5c07f155-602e-403b-bb86-5a786814f575")
@@ -568,37 +568,127 @@ namespace LearnSpace.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            CourseId = 1,
+                            DateGraded = new DateTime(2025, 5, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1700),
+                            Description = "Almost there! Keep going!",
+                            Score = 5,
+                            StudentId = new Guid("5c07f155-602e-403b-bb86-5a786814f575")
+                        },
+                        new
+                        {
+                            Id = 3,
                             CourseId = 2,
-                            DateGraded = new DateTime(2024, 12, 20, 10, 40, 56, 267, DateTimeKind.Local).AddTicks(2757),
+                            DateGraded = new DateTime(2025, 4, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1715),
+                            Description = "Great job!",
+                            Score = 6,
+                            StudentId = new Guid("5c07f155-602e-403b-bb86-5a786814f575")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CourseId = 2,
+                            DateGraded = new DateTime(2025, 6, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1726),
                             Description = "You can do more.",
                             Score = 3,
                             StudentId = new Guid("18e76084-b8a6-4e78-bd26-143f33a05eb8")
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 5,
+                            CourseId = 2,
+                            DateGraded = new DateTime(2025, 5, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1735),
+                            Description = "Don't give up.",
+                            Score = 2,
+                            StudentId = new Guid("18e76084-b8a6-4e78-bd26-143f33a05eb8")
+                        },
+                        new
+                        {
+                            Id = 6,
                             CourseId = 3,
-                            DateGraded = new DateTime(2024, 12, 20, 10, 40, 56, 267, DateTimeKind.Local).AddTicks(2765),
+                            DateGraded = new DateTime(2025, 4, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1748),
+                            Description = "Not so bad! Keep practicing!",
+                            Score = 5,
+                            StudentId = new Guid("18e76084-b8a6-4e78-bd26-143f33a05eb8")
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CourseId = 3,
+                            DateGraded = new DateTime(2025, 6, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1759),
                             Description = "You can do more.",
                             Score = 5,
                             StudentId = new Guid("c6903087-71e5-41ba-80be-ed119b7902fc")
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 8,
+                            CourseId = 3,
+                            DateGraded = new DateTime(2025, 5, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1769),
+                            Description = "Excellent!",
+                            Score = 6,
+                            StudentId = new Guid("c6903087-71e5-41ba-80be-ed119b7902fc")
+                        },
+                        new
+                        {
+                            Id = 9,
                             CourseId = 4,
-                            DateGraded = new DateTime(2024, 12, 20, 10, 40, 56, 267, DateTimeKind.Local).AddTicks(2772),
-                            Description = "You can do more.",
+                            DateGraded = new DateTime(2025, 4, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1778),
+                            Description = "Excellent!",
+                            Score = 6,
+                            StudentId = new Guid("c6903087-71e5-41ba-80be-ed119b7902fc")
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CourseId = 4,
+                            DateGraded = new DateTime(2025, 6, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1792),
+                            Description = "Keep going!",
+                            Score = 5,
+                            StudentId = new Guid("f4aa693d-305e-426b-950c-d02a8ca8b56f")
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CourseId = 5,
+                            DateGraded = new DateTime(2025, 5, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1803),
+                            Description = "Not so bad!",
+                            Score = 4,
+                            StudentId = new Guid("f4aa693d-305e-426b-950c-d02a8ca8b56f")
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CourseId = 5,
+                            DateGraded = new DateTime(2025, 4, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1812),
+                            Description = "Great Job!",
                             Score = 6,
                             StudentId = new Guid("f4aa693d-305e-426b-950c-d02a8ca8b56f")
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 13,
                             CourseId = 5,
-                            DateGraded = new DateTime(2024, 12, 20, 10, 40, 56, 267, DateTimeKind.Local).AddTicks(2778),
+                            DateGraded = new DateTime(2025, 6, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1822),
                             Description = "You can do more.",
+                            Score = 5,
+                            StudentId = new Guid("bb5432a1-ea56-450b-9db6-f7349faf28a6")
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CourseId = 1,
+                            DateGraded = new DateTime(2025, 5, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1831),
+                            Description = "Excellent!",
                             Score = 6,
+                            StudentId = new Guid("bb5432a1-ea56-450b-9db6-f7349faf28a6")
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CourseId = 1,
+                            DateGraded = new DateTime(2025, 4, 8, 17, 48, 48, 884, DateTimeKind.Local).AddTicks(1841),
+                            Description = "Could have done better!",
+                            Score = 3,
                             StudentId = new Guid("bb5432a1-ea56-450b-9db6-f7349faf28a6")
                         });
                 });
@@ -716,47 +806,47 @@ namespace LearnSpace.Infrastructure.Migrations
                             FileName = "task1.txt",
                             FileType = "text/plain",
                             StudentId = new Guid("5c07f155-602e-403b-bb86-5a786814f575"),
-                            SubmittedOn = new DateTime(2024, 12, 20, 8, 40, 56, 267, DateTimeKind.Utc).AddTicks(2083)
+                            SubmittedOn = new DateTime(2025, 6, 3, 14, 48, 48, 884, DateTimeKind.Utc).AddTicks(772)
                         },
                         new
                         {
                             Id = 2,
                             AssignmentId = 4,
-                            FileContent = new byte[] { 49, 50, 51, 49, 50, 52, 49, 50, 52, 50, 51, 52 },
+                            FileContent = new byte[] { 113, 119, 100, 113, 101, 50, 113, 101, 119, 113, 101, 113, 119, 101, 119, 113, 100, 113, 119, 101, 113, 100 },
                             FileName = "task2.txt",
                             FileType = "text/plain",
                             StudentId = new Guid("18e76084-b8a6-4e78-bd26-143f33a05eb8"),
-                            SubmittedOn = new DateTime(2024, 12, 20, 8, 40, 56, 267, DateTimeKind.Utc).AddTicks(2109)
+                            SubmittedOn = new DateTime(2025, 6, 4, 14, 48, 48, 884, DateTimeKind.Utc).AddTicks(814)
                         },
                         new
                         {
                             Id = 3,
                             AssignmentId = 6,
-                            FileContent = new byte[] { 49, 50, 51, 49, 50, 52, 49, 50, 52, 50, 51, 52 },
+                            FileContent = new byte[] { 113, 119, 101, 113, 119, 101, 113, 119, 101, 115, 97, 100 },
                             FileName = "task3.txt",
                             FileType = "text/plain",
                             StudentId = new Guid("c6903087-71e5-41ba-80be-ed119b7902fc"),
-                            SubmittedOn = new DateTime(2024, 12, 20, 8, 40, 56, 267, DateTimeKind.Utc).AddTicks(2114)
+                            SubmittedOn = new DateTime(2025, 6, 7, 14, 48, 48, 884, DateTimeKind.Utc).AddTicks(820)
                         },
                         new
                         {
                             Id = 4,
                             AssignmentId = 8,
-                            FileContent = new byte[] { 49, 50, 51, 49, 50, 52, 49, 50, 52, 50, 51, 52 },
+                            FileContent = new byte[] { 113, 119, 100, 113, 119, 32, 113, 119, 100, 32, 113, 119, 100 },
                             FileName = "task4.txt",
                             FileType = "text/plain",
                             StudentId = new Guid("f4aa693d-305e-426b-950c-d02a8ca8b56f"),
-                            SubmittedOn = new DateTime(2024, 12, 20, 8, 40, 56, 267, DateTimeKind.Utc).AddTicks(2118)
+                            SubmittedOn = new DateTime(2025, 6, 5, 14, 48, 48, 884, DateTimeKind.Utc).AddTicks(826)
                         },
                         new
                         {
                             Id = 5,
                             AssignmentId = 10,
-                            FileContent = new byte[] { 49, 50, 51, 49, 50, 52, 49, 50, 52, 50, 51, 52 },
+                            FileContent = new byte[] { 113, 87, 69, 67, 119, 100, 119, 97, 100, 97, 119 },
                             FileName = "task5.txt",
                             FileType = "text/plain",
                             StudentId = new Guid("bb5432a1-ea56-450b-9db6-f7349faf28a6"),
-                            SubmittedOn = new DateTime(2024, 12, 20, 8, 40, 56, 267, DateTimeKind.Utc).AddTicks(2122)
+                            SubmittedOn = new DateTime(2025, 6, 2, 14, 48, 48, 884, DateTimeKind.Utc).AddTicks(831)
                         });
                 });
 

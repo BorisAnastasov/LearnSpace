@@ -131,7 +131,7 @@ namespace LearnSpace.Core.Services
             var student = await repository.GetStudentAsync(userId);
             var model = new AssignmentInfoViewModel
             {
-                Id = assignmentId,
+                AssignmentId = assignmentId,
                 Title = assignment.Title,
                 Description = assignment.Description,
                 DueDate = assignment.DueDate.ToString(DateFormat),

@@ -2,6 +2,7 @@
 
 @{
 	ViewBag.Title = "Dashboard";
+	string success = ((Model.Success != null ? Model.Success.ToString("f2") : "No Records."));
 }
 
 
@@ -14,42 +15,35 @@
 	</div>
 	<div class="container">
 		<div class="d-flex flex-row">
-			<div asp-controller="Grade" asp-action="Dairy" class="color-blue m-2 w-100 text-white">
-				<h1 class="text-center" style="margin-top: 5px;">
-					@(Model.Success != null ? Model.Success.ToString("f2") : "No Records.")
-				</h1>
-
-				<p class="h4  text-center">Success</p>
+			<div asp-controller="Grade" asp-action="Dairy" class="color-blue m-2 w-100 text-white rounded shadow-lg">
+				<h1 class="text-center" style="margin-top: 5px;">@success</h1>
+				<p class="h4 text-center">Success</p>
 			</div>
 
-
-
-			<div href="" class="color-red m-2 w-100 text-white">
+			<div class="color-red m-2 w-100 text-white rounded shadow-lg">
 				<h1 class="text-center">@Model.GradeCount</h1>
-				<p class="h4  text-center">Grade Count</p>
+				<p class="h4 text-center">Grade Count</p>
 			</div>
 		</div>
 
 		<div class="d-flex flex-row">
-			<div href="" class="color-green m-2 w-100 text-white">
+			<div class="color-green m-2 w-100 text-white rounded shadow-lg">
 				<h1 class="text-center">@Model.AssignmentCount</h1>
-				<p class="h4  text-center">Assignment Count</p>
+				<p class="h4 text-center">Assignment Count</p>
 			</div>
 
-			<div href="" class="color-orange m-2 w-100 text-white">
+			<div class="color-orange m-2 w-100 text-white rounded shadow-lg">
 				<h1 class="text-center">@Model.ClassCount</h1>
 				<p class="h4 text-center">Classes Count</p>
 			</div>
 		</div>
 	</div>
 
+
 	<div class=" d-flex flex-row justify-content-center align-items-center" style="">
 		<canvas id="myLineChart" class="chart-canvas" style="height: 300px; width: 500px"></canvas>
 		<canvas id="myBarChart" class="chart-canvas" style="height: 300px; width: 500px"></canvas>
 	</div>
-
-
-
 
 </div>
 <script>
@@ -125,7 +119,6 @@
 
 <style>
 
-
 	.charMenu {
 		width: 100vw;
 		height: 40px;
@@ -147,5 +140,23 @@
 		border-radius: 20px;
 		border: solid 3px rgba(54, 162, 235, 1);
 		background: white;
+	}
+
+	.color-blue {
+		background-color: #007bff;
+		border-radius: 8px;
+		padding: 0px;
+	}
+
+	.color-red {
+		background-color: #a6141b;
+		border-radius: 8px;
+		padding: 10px;
+	}
+
+	.color-green {
+		background-color: #28a745;
+		border-radius: 8px;
+		padding: 10px;
 	}
 </style>

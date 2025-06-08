@@ -78,6 +78,8 @@ namespace LearnSpace.Infrastructure.Database.Configuration
 				CourseId = 2
 			};
 
+			grades.Add(grade);
+
 			//2-3
 			grade = new Grade()
 			{

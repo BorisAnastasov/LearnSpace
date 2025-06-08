@@ -1,4 +1,5 @@
 ﻿using LearnSpace.Core.Interfaces;
+using LearnSpace.Core.Models.Assignment;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LearnSpace.Web.Areas.Student.Controllers
@@ -32,7 +33,7 @@ namespace LearnSpace.Web.Areas.Student.Controllers
             return View(assignments);
         }
 
-        [HttpGet]
+        [HttpGet("AssignmentInfo/{id}")]
         public async Task<IActionResult> AssignmentInfo(int id) 
         {
             if (!(await assignmentService.ExistsByIdAsync(id)))
@@ -45,6 +46,20 @@ namespace LearnSpace.Web.Areas.Student.Controllers
             return View(assignment);
         }
 
-        private string UserId => GetUserId();
+		[HttpGet]
+		public async Task<IActionResult> AssignmentInfo(AssignmentInfoViewModel model)
+		{
+			if (!(await assignmentService.ExistsByIdAsync(model.AssignmentId)))
+			{
+				return RedirectToAction("Error404", "Error");
+			}
+
+			var assignment = await assignmentService.GetAssignmentInfoAsync(UserId, model.AssignmentId);
+            assignment.Errors = model.Errors;
+
+			return View(assignment);
+		}
+
+		private string UserId => GetUserId();
     }
 }

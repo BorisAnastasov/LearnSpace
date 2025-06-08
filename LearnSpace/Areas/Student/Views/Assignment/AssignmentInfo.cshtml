@@ -20,7 +20,7 @@
 			<p><strong>Due Date:</strong> @Model.DueDate</p>
 
 			<form asp-controller="Submission" asp-action="SubmitAssignment" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="assignmentId" value="@Model.Id" />
+				<input type="hidden" name="assignmentId" value="@Model.AssignmentId" />
 				<div class="file-upload-container d-flex align-items-center">
 					<label class="me-3">Upload File:</label>	
 					<input type="file" name="filePath" id="fileInput" class="form-control" />
